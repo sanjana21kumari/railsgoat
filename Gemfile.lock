@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    rack (= 1.6.0)
     actioncable (8.0.4)
       actionpack (= 8.0.4)
       activesupport (= 8.0.4)
@@ -510,6 +511,7 @@ DEPENDENCIES
   responders
   rspec-rails
   rubocop
+  rack (= 1.6.0)
   ruby-prof
   sassc-rails
   selenium-webdriver
