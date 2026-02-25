@@ -1,25 +1,27 @@
-name: CxSAST Scan
+name: CxFlow-GitHub-Pull-Request
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    types: [opened, reopened, synchronize]
+    branches:
+      - sanjana21kumari-patch-1
 
 jobs:
-  cxsast-scan:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
-      - name: Run CxFlow Container
-        run: |
-          docker run --rm \
-          -e CHECKMARX_SERVER=${{ secrets.CHECKMARX_SERVER }} \
-          -e CHECKMARX_USERNAME=${{ secrets.CHECKMARX_USERNAME }} \
-          -e CHECKMARX_PASSWORD=${{ secrets.CHECKMARX_PASSWORD }} \
-          -e GITHUB_TOKEN=${{ secrets.GH_TOKEN }} \
-          -e CXFLOW_GITHUB=true \
-          checkmarx/cx-flow:latest
+      - name: Checkmarx CxFlow Action
+        uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4
+        with:
+          project: ${{ github.repository }}-PR
+          checkmarx_url: ${{ secrets.CHECKMARX_URL }}
+          checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
+          checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
+          github_token: ${{ secrets.GH_TOKEN }}
+          incremental: true
+          break_build: false
+          scanners: sast
+          bug_tracker: GITHUBPULL
+          params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.head_ref }} --merge-id=${{ github.event.number }}
