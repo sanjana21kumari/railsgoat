@@ -6,7 +6,7 @@ gem "rails", "~> 8.0.0"
 ruby "3.3.6"
 
 gem "aruba"
-gem "bcrypt"
+gem "bcrypt", ">= 3.1.22"
 gem "foreman"
 gem "jquery-fileupload-rails"
 gem "jquery-rails"
@@ -41,7 +41,7 @@ group :development, :mysql do
   gem "pry"
   gem "rack-livereload"
   gem "rb-fsevent"
-  gem "rubocop"
+  gem "rubocop", ">= 1.82.0"
 end
 
 group :development, :test, :mysql do
