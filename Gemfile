@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 source "https://rubygems.org"
 
-gem "rails", "~> 8.0.0"
+gem "rails", "~> 8.1.2", ">= 8.1.2.1"
 
 ruby "3.3.6"
 
@@ -23,9 +23,9 @@ gem "turbolinks"
 
 # Asset pipeline
 gem "sprockets-rails"
-gem "importmap-rails"
+gem "importmap-rails", ">= 2.2.3"
 gem "stimulus-rails"
-gem "turbo-rails"
+gem "turbo-rails", ">= 2.0.21"
 
 # Add SMTP server support using MailCatcher
 # NOTE: https://github.com/sj26/mailcatcher#bundler
@@ -49,7 +49,7 @@ group :development, :test, :mysql do
   gem "database_cleaner"
   gem "launchy"
   gem "selenium-webdriver"
-  gem "rspec-rails"
+  gem "rspec-rails", ">= 8.0.3"
   gem "test-unit"
 end
 
