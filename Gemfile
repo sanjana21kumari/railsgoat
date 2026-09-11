@@ -48,7 +48,7 @@ group :development, :test, :mysql do
   gem "capybara"
   gem "database_cleaner"
   gem "launchy"
-  gem "selenium-webdriver"
+  gem "selenium-webdriver", ">= 4.39.0"
   gem "rspec-rails"
   gem "test-unit"
 end
